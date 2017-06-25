@@ -17,7 +17,7 @@ var current_video = {
 function new_video() {
   fs.readdir('public/uploads', function(err, items) {
     var n = Math.round(Math.random()*items.length)-1;
-    console.log("Playing item", n, "from", items);
+    console.log("Playing gif", items[n]);
     current_video.src = 'uploads/' + items[n];
     io.emit('play', current_video);
   });
