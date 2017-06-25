@@ -1,9 +1,6 @@
-window.loopcount = 0;
-
 function play(video) {
   if(!playout.src.endsWith(video.src)) {
     console.log('Current video has', window.loopcount, 'loops, resetting...');
-    window.loopcount = 0;
     console.log('Playing', video);
     playout.setAttribute('src', video.src);
     window.castReceiverManager.setApplicationState('Playing gifs!');
@@ -76,9 +73,5 @@ var playout = document.querySelector("video");
 
 playout.loop = true;
 playout.autoplay = true;
-playout.addEventListener('playing', function() {
-  window.loopcount += 1;
-  window.castReceiverManager.setApplicationState('Looped ' + window.loopcount + ' times');
-});
 
 setController({controller: location.host});
