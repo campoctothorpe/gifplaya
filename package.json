@@ -1,0 +1,13 @@
+{
+  "name": "gifplaya",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "~4.15.2",
+    "morgan": "^1.8.2",
+    "socket.io": "^2.0.3"
+  }
+}

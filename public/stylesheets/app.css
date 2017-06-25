@@ -1,0 +1,9 @@
+html, body {
+  margin: 0;
+  background-color: #000;
+}
+
+video {
+  height: 100%;
+  width: 100%;
+}
