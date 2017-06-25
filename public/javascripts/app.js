@@ -1,4 +1,16 @@
 window.loopcount = 0;
+
+function play(video) {
+  if(!playout.src.endsWith(video.src)) {
+    console.log('Current video has', window.loopcount, 'loops, resetting...');
+    window.loopcount = 0;
+    console.log('Playing', video);
+    playout.setAttribute('src', video.src);
+    window.castReceiverManager.setApplicationState('Playing gifs!');
+  }
+}
+
+
 function setController(message) {
   console.log("Connecting to ", message.controller);
   if(window.io === undefined) {
@@ -7,19 +19,9 @@ function setController(message) {
     socketiojs.setAttribute('type', 'text/javascript');
     socketiojs.setAttribute('src', 'http://' + message.controller + '/socket.io/socket.io.js');
     document.body.appendChild(socketiojs);
-  } else {
+  } else if(window.socket === undefined || window.socket.uri !== 'http://' + message.controller) {
     socket = io.connect('http://' + message.controller);
-    socket.on('play', function(video) {
-      if(playout.src != video.src) {
-        console.log('Current video has', window.loopcount, 'loops, resetting...');
-        window.loopcount = 0;
-        console.log('Playing', video);
-        playout.setAttribute('src', video.src);
-        window.castReceiverManager.setApplicationState('Playing gifs!');
-      } else {
-        console.debug('Alreadying playing', video.src, '- not reloading.');
-      }
-    });
+    socket.on('play', play);
   }
 }
 
