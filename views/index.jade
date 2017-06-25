@@ -5,6 +5,8 @@ html
   body
     button(id='pushme', is='google-cast-button') Do The Needful
     button(id='reload') Reload remote app
+    p
+      b(class='receivername') Disconnected
     pre(id='debugmessage')
     script(type='text/javascript', src='https://www.gstatic.com/cv/js/sender/v1/cast_sender.js')
     script(type='text/javascript', src='/socket.io/socket.io.js')

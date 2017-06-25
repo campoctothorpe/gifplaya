@@ -55,8 +55,7 @@ function sessionListener(e) {
  */
 function sessionUpdateListener(isAlive) {
   var message = isAlive ? 'Session Updated' : 'Session Removed';
-  message += ': ' + session.sessionId;
-  appendMessage(message);
+  document.querySelector('.receivername').innerHTML = isAlive ? session.receiver.friendlyName : 'Disconnected';
   if (!isAlive) {
     session = null;
   }
