@@ -1,6 +1,5 @@
 function play(video) {
   if(!playout.src.endsWith(video.src)) {
-    console.log('Current video has', window.loopcount, 'loops, resetting...');
     console.log('Playing', video);
     playout.setAttribute('src', video.src);
     window.castReceiverManager.setApplicationState('Playing gifs!');
